@@ -1,0 +1,32 @@
+From 2b11c7645378dbe78a4ab65858166ac29370429b Mon Sep 17 00:00:00 2001
+From: Esteban Mendez <mendez01@allegheny.edu>
+Date: Thu, 13 Jun 2024 13:56:29 -0400
+Subject: [PATCH] Added attributes
+
+---
+ src/Graph.tsx | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/Graph.tsx b/src/Graph.tsx
+index 757903a..2100dee 100644
+--- a/src/Graph.tsx
++++ b/src/Graph.tsx
+@@ -49,6 +49,15 @@ class Graph extends Component<IProps, {}> {
+ 
+       // Add more Perspective configurations here.
+       elem.load(this.table);
++      elem.setAttribute('view', 'y_line');
++      elem.setAttribute('column-pivots', '["stock"]');
++      elem.setAttribute('row-pivots', '["timestamp"]');
++      elem.setAttribute('columns', '["top_ask_price"]');
++      elem.setAttribute('aggregates', `
++        {"stock":"distinct count",
++        "top_ask_price":"avg",
++        "top_bid_price":"avg,
++        "timestamp":"distinct count"}`);
+     }
+   }
+ 
+-- 
+2.40.1.windows.1
+
